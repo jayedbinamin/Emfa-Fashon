@@ -1,0 +1,8 @@
+{
+  "name": "Nikhut Fashion",
+  "description": "Emfafashion — Luxury Bangladeshi Women's Three-Piece Boutique & Online Storefront.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

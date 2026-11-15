@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", "Hind Siliguri", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", "Hind Siliguri", system-ui, -apple-system, sans-serif;
+  --font-bengali: "Hind Siliguri", "Plus Jakarta Sans", sans-serif;
+  --color-maroon-950: #2A0510;
+  --color-maroon-900: #4A091B;
+  --color-maroon-800: #6E0F2A;
+  --color-maroon-700: #871637;
+  --color-gold-500: #D49A2A;
+  --color-gold-400: #F0C44B;
+  --color-ivory-50: #FAF7F4;
+  --color-ivory-100: #F3ECE6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  html[lang="bn"],
+  html[lang="bn"] body,
+  html[lang="bn"] h1,
+  html[lang="bn"] h2,
+  html[lang="bn"] h3,
+  html[lang="bn"] h4,
+  html[lang="bn"] .font-display,
+  html[lang="bn"] button,
+  html[lang="bn"] input,
+  html[lang="bn"] textarea,
+  html[lang="bn"] select {
+    font-family: var(--font-bengali);
+  }
+
+  .font-bengali {
+    font-family: var(--font-bengali);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Silk sheen sweep animation on hover using GPU-only transform & opacity */
+.silk-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.silk-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    rgba(255, 245, 224, 0.28) 48%,
+    rgba(255, 255, 255, 0.42) 50%,
+    rgba(255, 245, 224, 0.22) 52%,
+    transparent 75%
+  );
+  transform: translateX(-130%) skewX(-18deg);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.silk-sheen:hover::after,
+.group:hover .silk-sheen::after {
+  transform: translateX(130%) skewX(-18deg);
+  opacity: 1;
+}
+
+/* Editorial underline sweep */
+.nav-underline {
+  position: relative;
+}
+
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1.5px;
+  background-color: #6E0F2A;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-underline:hover::after,
+.nav-underline[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .silk-sheen::after,
+  .nav-underline::after {
+    transition: none;
+  }
+}
